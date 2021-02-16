@@ -11,6 +11,7 @@ __email__ = 'astridmo@nmbu.no'
 import math as m
 import cmath
 import numpy as np
+import matplotlib.pyplot as plt
 
 h = 6.63 * 10 ** (-34)  # Plancks constant
 
@@ -19,7 +20,7 @@ def phi(sigma, t, x, mass, v):
     """Calculate wave function"""
     p0 = mass * v
     k0 = (2 * m.pi * p0) / h
-    w0 = (2 * m.pi) / t
+    w0 = (m.pi*p0**2)/(h*mass)
     phi = []
 
     for xi in x:
@@ -35,11 +36,15 @@ def phi_squared(sigma, t, x, mass, v):
     return np.square(phi(sigma, t, x, mass, v))
 
 
+
+# ==================
+# Task a
+# ==================
 sigma = 0.01 * 10 ** (-2)
 t = 9 * 10 ** (-5)
-mass = 9.1094 * 10 ** (-31)  # Mass of electron
-x = np.linspace(0, 10, 1000)
-v = 10 ** 6 # m/s
+m_elec = 9.1094 * 10 ** (-31)  # Mass of electron
+x = np.linspace(0, 0.00001, 1000)
+v = 10  # m/s
 k0 = 3
 w0 = 4
 
@@ -47,4 +52,25 @@ w0 = 4
 #     print(phi(sigma, t, xi, mass, v))
 
 # print(np.square(phi(sigma, t, x, mass, v)))
-print(phi_squared(sigma, t, x, mass, v))
+wave = phi_squared(sigma, t, x, m_elec, v)
+
+plt.plot(x, wave)
+plt.show()
+
+# ====================
+# Task b
+# ====================
+
+# Variables
+m_helium = 6.64647 * 10 ** (-27)
+v1 = 2.2 * 10 ** 3
+v2 = 30 * 10 ** 3
+
+# Wave functions
+wave1 = phi_squared(sigma, t, x, m_helium, v1)
+wave2 = phi_squared(sigma, t, x, m_helium, v2)
+
+# Plot the wave functions
+plt.plot(x, wave1)
+plt.plot(x, wave2)
+plt.show()
