@@ -40,14 +40,17 @@ def phi_squared(x, sigma, t, mass, v):
     return np.square(phi(sigma, t, x, mass, v))
 
 
-def phi_squared2(x, sigma, t, mass, v):
-    """Calculate squared of wave function"""
-    p0 = mass * v
-    phi_squared = []
-    for xi in x:
-        phi_squared.append((-(xi-(p0*t)/mass)**2 * sigma**2) / (sigma**4 + ((t*h)/mass)**2))
-
-    return phi_squared
+# def phi_squared2(x, sigma, t, mass, v):
+#     """
+#     Calculate squared of wave function.
+#     NB! Tried to calculate by hand. Did not get it right (?)
+#     """
+#     p0 = mass * v
+#     phi_squared = []
+#     for xi in x:
+#         phi_squared.append((-(xi-(p0*t)/mass)**2 * sigma**2) / (sigma**4 + ((t*h)/mass)**2))
+#
+#     return phi_squared
 
 # def phi_squared_integral(x, sigma, t, mass, v):
 #     """Calculation of pfi squared for use with integration"""
@@ -77,8 +80,8 @@ m_elec = 9.1094 * 10 ** (-31)  # Mass of electron
 x = np.linspace(-0.0003, 0.0003, 200)
 v = 10 ** 6 # m/s
 #x = 0.001
-wave1 = phi_squared2(x, sigma,t1, m_elec, v)
-wave2 = phi_squared2(x, sigma, t2, m_elec, v)
+wave1 = phi_squared(x, sigma,t1, m_elec, v)
+wave2 = phi_squared(x, sigma, t2, m_elec, v)
 print(wave1)
 print(wave2)
 #
