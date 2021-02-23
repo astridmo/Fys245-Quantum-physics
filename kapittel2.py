@@ -37,7 +37,8 @@ def phi(sigma, t, x, mass, v):
 
 def phi_squared(x, sigma, t, mass, v):
     """Calculate squared of wave function by using phi-function."""
-    return np.square(phi(sigma, t, x, mass, v))
+    return phi(sigma, t, x, mass, v) * np.conj(phi(sigma, t, x, mass, v))
+    #return np.square(phi(sigma, t, x, mass, v))
 
 
 # def phi_squared2(x, sigma, t, mass, v):
@@ -80,7 +81,7 @@ m_elec = 9.1094 * 10 ** (-31)  # Mass of electron
 x = np.linspace(-0.0003, 0.0003, 200)
 v = 10 ** 6 # m/s
 #x = 0.001
-wave1 = phi_squared(x, sigma,t1, m_elec, v)
+wave1 = phi_squared(x, sigma, t1, m_elec, v)
 wave2 = phi_squared(x, sigma, t2, m_elec, v)
 print(wave1)
 print(wave2)
