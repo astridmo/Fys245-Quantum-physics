@@ -10,22 +10,37 @@ __email__ = 'astridmo@nmbu.no'
 
 import math
 import matplotlib.pyplot as plt
-from numpy import linspace
+import numpy as np
 
-a = 2
-h_bar = 1.05457
-peis = 1 * 10 ** (-34)
-m_elec = 9.10938356 * 10 ** (-31)
+# Definerer en verdi for ksi0
+v = 5 # v = 1 gir 1 krysningspunkt, v = 2 gir 2 krysningspunkter osv.
 
-E = 10  # energy of ??
 
-tsi = math.sqrt(2 * m_elec * E) * a * (1 / (h_bar * 2))
-tsi0 = linspace(0, 15)
-# tsi0 = (a/2) * math.sqrt(2*m_elec*V0)/h_bar
+# Definerer en array som definerer ksi
+max_value = (v-0.5)*math.pi   # Max value of ksi
+ksi = np.linspace(0, max_value, 1000)  # Definerer ksi
+ksi0 = math.pi
 
-tan_tsi = math.tan(tsi)
+#print(ksi)
+# Setter opp uttrykk for høyre side
+try:
+    hs = np.sqrt(ksi0**2 - ksi**2)/ksi
+except RuntimeWarning:
+    pass
 
-plt.plot(tsi0, tsi)
+# Venstre side
+try:
+    vs = np.tan(ksi)
+except RuntimeWarning:
+    pass
+print(vs)
+
+vs = vs[:-1]
+
+#plt.plot(ksi[:-1], vs)
+plt.plot(ksi, hs)
 plt.show()
+
+
 
 
