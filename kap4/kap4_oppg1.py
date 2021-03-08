@@ -21,23 +21,20 @@ max_value = (v-0.5)*math.pi   # Max value of ksi
 ksi = np.linspace(0, max_value, 1000)  # Definerer ksi
 ksi0 = math.pi
 
-#print(ksi)
 # Setter opp uttrykk for høyre side
-try:
-    hs = np.sqrt(ksi0**2 - ksi**2)/ksi
-except RuntimeWarning:
-    pass
+hs = np.sqrt(ksi0**2 - ksi**2)/ksi
 
 # Venstre side
-try:
-    vs = np.tan(ksi)
-except RuntimeWarning:
-    pass
+vs = np.tan(ksi)
 print(vs)
 
-vs = vs[:-1]
-
-#plt.plot(ksi[:-1], vs)
+# =========================
+# Plotting
+# # =======================
+plt.figure(1)
+plt.ylim(0, 25)
+plt.xlim(0, max_value)
+plt.plot(ksi, vs)
 plt.plot(ksi, hs)
 plt.show()
 
