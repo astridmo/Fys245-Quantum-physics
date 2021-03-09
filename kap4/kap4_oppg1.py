@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Definerer en verdi for ksi0
-v = 5 # v = 1 gir 1 krysningspunkt, v = 2 gir 2 krysningspunkter osv.
+v = 5  # v = 1 gir 1 krysningspunkt, v = 2 gir 2 krysningspunkter osv.
 
 
 # Definerer en array som definerer ksi
@@ -30,7 +30,7 @@ print(vs)
 
 # =========================
 # Plotting
-# # =======================
+# =======================
 plt.figure(1)
 plt.ylim(0, 25)
 plt.xlim(0, max_value)
