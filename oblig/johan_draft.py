@@ -102,3 +102,4 @@ for k in range(0, N_sim):
 plt.figure(2)
 plt.plot(x, Phi2_array[0])
 plt.plot(x, Phi2_array[-1])
+plt.show()
